@@ -1,3 +1,4 @@
+from student import Student
 from user import User
 
 
@@ -30,7 +31,7 @@ class Teacher(User):
         else:
             print("Такого курса нет!")
 
-    def add_student(self, course: str, student: str) -> None:
+    def add_student(self, course: str, student: Student) -> None:
         if course not in self.__courses:
             print("Такого курса нет!")
 
