@@ -9,7 +9,7 @@ class Teacher(User):
         self.__user_type = user_type
         self.__courses = dict()
 
-    def add_course(self, course: str) -> None:
+    def create_course(self, course: str) -> None:
         if course not in self.__courses:
             self.__courses[course] = list()
         else:
@@ -20,8 +20,9 @@ class Teacher(User):
         empty_courses = 0
 
         if length_courses != empty_courses:
+            print(f'Курсы преподавателя {self.__name}:')
             for course in self.__courses:
-                print(course)
+                print(f'- {course}')
         else:
             print("Курсов нет!")
 
@@ -41,9 +42,11 @@ class Teacher(User):
     def show_students(self, course: str) -> None:
         if course in self.__courses:
             students = self.__courses[course]
-            formatted_students_list = ', '.join(students)
-            print(f"Студенты курса {course}:")
-            print(formatted_students_list)
+            print(f"Студенты {self.__name} - курса {course}:")
+
+            for student in students:
+                student_name = student.get_name()
+                print(f'- {student_name}')
         else:
             print("Такого курса нет!")
 
