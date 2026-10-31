@@ -3,10 +3,9 @@ from user import User
 
 
 class Teacher(User):
-    def __init__(self, name: str, user_type: str):
-        super().__init__(name, user_type)
+    def __init__(self, name: str):
+        super().__init__(name)
         self.__name = name
-        self.__user_type = user_type
         self.__courses = dict()
 
     def create_course(self, course: str) -> None:
@@ -15,16 +14,14 @@ class Teacher(User):
         else:
             print("Такой курс уже есть!")
 
-    def show_courses(self) -> None:
+    def get_courses(self) -> dict | None:
         length_courses = len(self.__courses)
         empty_courses = 0
 
         if length_courses != empty_courses:
-            print(f'Курсы преподавателя {self.__name}:')
-            for course in self.__courses:
-                print(f'- {course}')
+            return self.__courses
         else:
-            print("Курсов нет!")
+            return None
 
     def remove_course(self, course: str) -> None:
         if course not in self.__courses:
