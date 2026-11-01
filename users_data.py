@@ -1,7 +1,6 @@
 from student import Student
 from teacher import Teacher
 
-
 Ivan = "Иван"
 Igor = "Игорь"
 Viktor = "Виктор"
