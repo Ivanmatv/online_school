@@ -20,8 +20,8 @@ for user in users_list:
     user_name = user.get_name()
     users_dict[user_name] = user
 
-mathematics_course = Course(name='Математика', teacher=Viktor)
-programming_course = Course(name='Программирование', teacher=Stas)
+mathematics_course = Course(name='Математика', teacher=mathematics_teacher)
+programming_course = Course(name='Программирование', teacher=programming_teacher)
 
 courses = [mathematics_course, programming_course]
 courses_dict = dict()

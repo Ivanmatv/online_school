@@ -3,7 +3,7 @@ from teacher import Teacher
 
 
 class Course:
-    def __init__(self, name: str, teacher: str) -> None:
+    def __init__(self, name: str, teacher: Teacher) -> None:
         self.__name = name
         self.__course = dict()
         self.__teacher = teacher
@@ -11,6 +11,10 @@ class Course:
 
     def add_teacher(self):
         self.__course[self.__teacher] = list()
+
+    def get_teacher(self):
+        teacher = next(iter(self.__course.keys()))
+        return teacher
 
     def get_name(self) -> str:
         return self.__name
@@ -29,9 +33,3 @@ class Course:
             print("Такого студента нет в списке")
         else:
             self.__course[self.__teacher].remove(student)
-
-    def get_teacher(self):
-        self.__course.keys()
-        teacher = ' '.join(self.__course.keys())
-
-        return teacher

@@ -13,16 +13,18 @@ def show_courses() -> None:
     print("Курсы:")
     for course_name, course_type in courses_dict.items():
         course_teacher = course_type.get_teacher()
-        print(f'Учитель {course_teacher} - {course_name}')
+        teacher_name = course_teacher.get_name()
+        print(f'Учитель {teacher_name} - {course_name}')
 
 def show_course_students(course: Course) -> None:
     course_name = course.get_name()
     course_teacher = course.get_teacher()
+    teacher_name = course_teacher.get_name()
     student_list = course.get_students()
     formatted_student_list = ", ".join(student_list)
 
     print(
-        f"На курс {course_teacher} - {course_name}\n"
+        f"На курс {teacher_name} - {course_name}\n"
         f"Записаны студенты: {formatted_student_list}"
     )
 
@@ -30,6 +32,8 @@ def course_enrollment():
     show_students()
     print()
     show_courses()
+
+    course = ''
 
     STOP_COMMAND = "нет"
     input_command = ""
@@ -54,7 +58,7 @@ def course_enrollment():
 
             chosen_course = ""
             while not chosen_course:
-                chosen_course = input("Введите название круса: ").strip()
+                chosen_course = input("Введите название курса: ").strip()
 
                 course_list = [course_type.get_name() for _ ,course_type in courses_dict.items()]
                 if chosen_course not in course_list:
@@ -68,4 +72,26 @@ def course_enrollment():
 
             show_course_students(course)
 
-course_enrollment()
+    return course
+
+
+def do_lesson(course: Course) -> None:
+    student_list = course.get_students()
+    teacher = course.get_teacher()
+    teacher.teach(student_list)
+
+    for student_name in student_list:
+        student = users_dict[student_name]
+        student.study()
+
+
+def main():
+    course = course_enrollment()
+
+    print()
+    print("Студенты записались на курсы")
+    print()
+
+    do_lesson(course)
+
+main()

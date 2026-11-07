@@ -7,6 +7,5 @@ class Student(User):
         super().__init__(name)
         self.__name = name
 
-    def study(self, teacher: Teacher) -> None:
-        teacher_name = teacher.get_name()
-        print(f"{self.__name} учиться у {teacher_name}")
+    def study(self) -> None:
+        print(f"Студент {self.__name} был на уроке")
