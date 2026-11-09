@@ -75,23 +75,14 @@ def course_enrollment():
     return course
 
 
-def do_lesson(course: Course) -> None:
-    student_list = course.get_students()
-    teacher = course.get_teacher()
-    teacher.teach(student_list)
-
-    for student_name in student_list:
-        student = users_dict[student_name]
-        student.study()
-
-
 def main():
     course = course_enrollment()
 
-    print()
-    print("Студенты записались на курсы")
-    print()
+    print("\nСтуденты записались на курсы\n")
 
-    do_lesson(course)
+    course_name = course.get_name()
+    students= course.get_students()
+    teacher = course.get_teacher()
+    teacher.teach(students=students, course_name=course_name)
 
 main()

@@ -2,6 +2,7 @@ from course import Course
 from student import Student
 from teacher import Teacher
 
+
 Ivan = "Иван"
 Igor = "Игорь"
 Viktor = "Виктор Михайлович"
@@ -13,10 +14,10 @@ student_igor = Student(name=Igor)
 mathematics_teacher = Teacher(name=Viktor)
 programming_teacher = Teacher(name=Stas)
 
-users_list = [student_ivan, student_igor, mathematics_teacher, programming_teacher]
+users = {student_ivan, student_igor, mathematics_teacher, programming_teacher}
 users_dict = dict()
 
-for user in users_list:
+for user in users:
     user_name = user.get_name()
     users_dict[user_name] = user
 
