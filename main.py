@@ -1,17 +1,17 @@
 from course import Course
 from student import Student
-from users_data import users_dict, courses_dict
+from users_data import users, courses
 
 
 def show_students() -> None:
     print("Студенты:")
-    for user_name, user_type in users_dict.items():
+    for user_name, user_type in users.items():
         if isinstance(user_type, Student):
             print(f'- {user_name}')
 
 def show_courses() -> None:
     print("Курсы:")
-    for course_name, course_type in courses_dict.items():
+    for course_name, course_type in courses.items():
         course_teacher = course_type.get_teacher()
         teacher_name = course_teacher.get_name()
         print(f'Учитель {teacher_name} - {course_name}')
@@ -51,8 +51,8 @@ def course_enrollment():
             while not chosen_student:
                 chosen_student = input("Введите имя студента: ").strip()
 
-                is_student = users_dict.get(chosen_student, "")
-                if chosen_student not in users_dict or not isinstance(is_student, Student):
+                is_student = users.get(chosen_student, "")
+                if chosen_student not in users or not isinstance(is_student, Student):
                     chosen_student = False
                     print("Нет такого студента")
 
@@ -60,13 +60,13 @@ def course_enrollment():
             while not chosen_course:
                 chosen_course = input("Введите название курса: ").strip()
 
-                course_list = [course_type.get_name() for _ ,course_type in courses_dict.items()]
+                course_list = [course_type.get_name() for _ ,course_type in courses.items()]
                 if chosen_course not in course_list:
                     chosen_course = False
                     print("Нет такого курса")
 
-            student = users_dict[chosen_student]
-            course = courses_dict[chosen_course]
+            student = users[chosen_student]
+            course = courses[chosen_course]
             if isinstance(student, Student):
                 course.add_student(student=student)
 

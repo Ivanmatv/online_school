@@ -14,19 +14,19 @@ student_igor = Student(name=Igor)
 mathematics_teacher = Teacher(name=Viktor)
 programming_teacher = Teacher(name=Stas)
 
-users = {student_ivan, student_igor, mathematics_teacher, programming_teacher}
-users_dict = dict()
+unique_users = {student_ivan, student_igor, mathematics_teacher, programming_teacher}
+users = dict()
 
-for user in users:
+for user in unique_users:
     user_name = user.get_name()
-    users_dict[user_name] = user
+    users[user_name] = user
 
 mathematics_course = Course(name='Математика', teacher=mathematics_teacher)
 programming_course = Course(name='Программирование', teacher=programming_teacher)
 
-courses = [mathematics_course, programming_course]
-courses_dict = dict()
+unique_courses = [mathematics_course, programming_course]
+courses = dict()
 
-for course in courses:
+for course in unique_courses:
     course_name = course.get_name()
-    courses_dict[course_name] = course
+    courses[course_name] = course
